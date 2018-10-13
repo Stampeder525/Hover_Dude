@@ -26,14 +26,15 @@ public class DrawController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (controls.getRightTriggerDown())
+        if (controls.getLeftTriggerDown())
         {
             GameObject line = Instantiate(linePrefab);
             activeLine = line.GetComponent<Line>();
             activeLine.SetOwner(transform.parent.GetComponent<PlayerController>().GetPlayerNumber());
             trail.emitting = true;
+
         }
-        if (controls.getRightTriggerUp())
+        if (controls.getLeftTriggerUp())
         {
             activeLine = null;
             trail.emitting = false;

@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - playArea
+  - Player1
+  - Player2
   layers:
   - Default
   - TransparentFX
@@ -13,8 +16,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - collidesWithP1
+  - collidesWithP2
   - 
   - 
   - 
@@ -40,4 +43,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: collidesWithP1
+    uniqueID: 396315031
+    locked: 0
+  - name: collidesWithP2
+    uniqueID: 1273855347
     locked: 0

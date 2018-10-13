@@ -173,12 +173,17 @@
     <Compile Include="Assets\InControl\Test\TestInputManager.cs" />
     <Compile Include="Assets\Scripts\BgOffset.cs" />
     <Compile Include="Assets\Scripts\ControllerInputScript.cs" />
+    <Compile Include="Assets\Scripts\DestroyPelletByTime.cs" />
     <Compile Include="Assets\Scripts\DrawController.cs" />
     <Compile Include="Assets\Scripts\DrawControllerXBONE.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\gameOver.cs" />
     <Compile Include="Assets\Scripts\Line.cs" />
+    <Compile Include="Assets\Scripts\Pellet.cs" />
+    <Compile Include="Assets\Scripts\playAreaGameOver.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\ShootingController.cs" />
     <Compile Include="Assets\Scripts\SpriteController.cs" />
     <Compile Include="Assets\Scripts\TestControllerScript.cs" />
     <None Include="Assets\InControl\README\README.txt" />
