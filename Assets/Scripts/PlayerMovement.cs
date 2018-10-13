@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
     private ControllerInputScript controls;
-    private Rigidbody2D rb;
     public float speed;
 
 
@@ -12,7 +11,6 @@ public class PlayerMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         controls = GameObject.Find("ControllerInput").GetComponent<ControllerInputScript>();
-        rb = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
