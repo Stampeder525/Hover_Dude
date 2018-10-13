@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     public static GameManager instance;
 
@@ -12,7 +13,8 @@ public class GameManager : MonoBehaviour {
     private ControllerInputScript controls;
 
     // Use this for initialization
-    void Awake () {
+    void Awake()
+    {
         if (instance == null)
         {
             instance = this;
@@ -22,7 +24,7 @@ public class GameManager : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        for(int i = 0; i < numPlayers; i++)
+        for (int i = 0; i < numPlayers; i++)
         {
             ControllerInputScript controls = controllers[i].GetComponent<ControllerInputScript>();
             controls.SetPlayerNumber(i);
@@ -33,12 +35,13 @@ public class GameManager : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
-        for(int i = 0; i < numPlayers; i++)
+        for (int i = 0; i < numPlayers; i++)
         {
             if (controllers[i].GetComponent<ControllerInputScript>().getDPadDownDown())
             {
@@ -50,7 +53,7 @@ public class GameManager : MonoBehaviour {
 
     public GameObject GetController(int playerNumber)
     {
-        Debug.Log(controllers[playerNumber]);
+        //Debug.Log(controllers[playerNumber]);
         return controllers[playerNumber];
     }
 }

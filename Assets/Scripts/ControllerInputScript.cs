@@ -3,31 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using InControl;
 
-public class ControllerInputScript : MonoBehaviour {
-	private InputDevice inputDevice;
-	private int playerNumber;
-
+public class ControllerInputScript : MonoBehaviour
+{
+    private InputDevice inputDevice;
+    private int playerNumber;
 
     // Update is called once per frame
-    void Update () {
-		inputDevice = InputManager.Devices[playerNumber];
-	}
+    //void Update()
+    //{
+    //    inputDevice = InputManager.Devices[playerNumber];
+    //}
 
-	public float getLeftStickX() {
-		return inputDevice.LeftStickX;
-	}
+    public float getLeftStickX()
+    {
+        return inputDevice.LeftStickX;
+    }
 
-	public float getLeftStickY() {
-		return inputDevice.LeftStickY;
-	}
+    public float getLeftStickY()
+    {
+        return inputDevice.LeftStickY;
+    }
 
-	public float getRightStickX() {
-		return inputDevice.RightStickX;
-	}
+    public float getRightStickX()
+    {
+        return inputDevice.RightStickX;
+    }
 
-	public float getRightStickY() {
-		return inputDevice.RightStickY;
-	}
+    public float getRightStickY()
+    {
+        return inputDevice.RightStickY;
+    }
+
+    public bool getRightTrigger()
+    {
+        return inputDevice.GetControl(InputControlType.RightTrigger).IsPressed;
+    }
 
     public bool getRightTriggerDown()
     {
@@ -37,6 +47,16 @@ public class ControllerInputScript : MonoBehaviour {
     public bool getRightTriggerUp()
     {
         return inputDevice.GetControl(InputControlType.RightTrigger).WasReleased;
+    }
+
+    public bool getLeftTriggerDown()
+    {
+        return inputDevice.GetControl(InputControlType.LeftTrigger).WasPressed;
+    }
+
+    public bool getLeftTriggerUp()
+    {
+        return inputDevice.GetControl(InputControlType.LeftTrigger).WasReleased;
     }
 
     public bool getDPadDownDown()
