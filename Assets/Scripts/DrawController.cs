@@ -5,25 +5,24 @@ using UnityEngine;
 public class DrawController : MonoBehaviour {
     public float radius;
     private Vector3 cursorPos;
+    private float lerpSpeed;
+    private float angle;
 
     // Use this for initialization
     void Start () {
 		cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition); //CHANGE MOUSE TO CONTROLLER INPUT
+        lerpSpeed = 0.4f;
+        angle = cursorPos.x;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition); //CHANGE MOUSE TO CONTROLLER INPUT
-        //angle += cursorPos.x;
+
+        cursorPos = Vector3.Lerp(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), 0.1f); //CHANGE MOUSE TO CONTROLLER INPUT
+        angle += cursorPos.x;
         Vector2 offset = (Vector2)cursorPos - Vector2.zero;
         offset.Normalize();
         offset = offset * radius;
         transform.position = offset;
-        Vector2 dir = cursorPos - this.transform.position;
-        //Check if dir is negative, then reverse
-        if (Mathf.Abs(cursorPos.x) <= 2f && Mathf.Abs(cursorPos.y) <= 2f)
-        {
-            dir = -1 * dir;
-        }
     }
 }
