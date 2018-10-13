@@ -5,18 +5,12 @@ using InControl;
 
 public class ControllerInputScript : MonoBehaviour {
 	private InputDevice inputDevice;
-	public int playerNumber;
+	private int playerNumber;
 
-	// Use this for initialization
-	void Start ()
-    {
-        inputDevice = InputManager.Devices[0];
-
-    }
 
     // Update is called once per frame
     void Update () {
-		inputDevice = InputManager.Devices[0];
+		inputDevice = InputManager.Devices[playerNumber];
 	}
 
 	public float getLeftStickX() {
@@ -48,6 +42,12 @@ public class ControllerInputScript : MonoBehaviour {
     public bool getDPadDownDown()
     {
         return inputDevice.GetControl(InputControlType.DPadDown).WasPressed;
+    }
+
+    public void SetPlayerNumber(int pNum)
+    {
+        playerNumber = pNum;
+        inputDevice = InputManager.Devices[playerNumber];
     }
 
 

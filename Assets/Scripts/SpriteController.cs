@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpriteController : MonoBehaviour {
-    public GameObject controller;
+    private GameObject controller;
     private ControllerInputScript controls;
 
     // Use this for initialization
     void Start () {
+        controller = GameManager.instance.GetController(transform.parent.GetComponent<PlayerController>().GetPlayerNumber());
         controls = controller.GetComponent<ControllerInputScript>();
     }
 

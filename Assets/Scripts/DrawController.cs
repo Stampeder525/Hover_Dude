@@ -11,17 +11,25 @@ public class DrawController : MonoBehaviour {
     private Vector3 cursorPos;
     private float lerpFract;
     private float angle;
-    public GameObject controller;
+    private GameObject controller;
     private ControllerInputScript controls;
-    private TrailRenderer trail;
 
     // Use this for initialization
     void Start () {
-		cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition); //CHANGE MOUSE TO CONTROLLER INPUT
-        lerpFract = 0.3f;
-        trail = gameObject.GetComponent<TrailRenderer>();
-        angle = Vector3.Angle(Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.parent.position, transform.position - transform.parent.position);
+        controller = GameManager.instance.GetController(transform.parent.GetComponent<PlayerController>().GetPlayerNumber());
+        Debug.Log("Player " + transform.parent.GetComponent<PlayerController>().GetPlayerNumber() + ", Controller " + controller);
         controls = controller.GetComponent<ControllerInputScript>();
+        float joystickX = controls.getLeftStickX();
+        float joystickY = controls.getLeftStickY();
+        Vector3 joystickVec = new Vector3(joystickX, joystickY, 0);
+        cursorPos = joystickVec;
+        cursorPos.Normalize();
+        cursorPos = cursorPos * radius;
+        transform.localPosition = cursorPos;
+        //cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition); //CHANGE MOUSE TO CONTROLLER INPUT
+        lerpFract = 0.3f;
+        angle = Vector3.Angle(Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.parent.position, transform.position - transform.parent.position);
+
     }
 	
 	// Update is called once per frame
@@ -31,12 +39,10 @@ public class DrawController : MonoBehaviour {
             GameObject line = Instantiate(linePrefab);
             activeLine = line.GetComponent<Line>();
             activeLine.SetOwner(transform.parent.GetComponent<PlayerController>().GetPlayerNumber());
-            trail.emitting = true;
         }
         if (controls.getRightTriggerUp())
         {
             activeLine = null;
-            trail.emitting = false;
         }
 
         if (activeLine != null)
