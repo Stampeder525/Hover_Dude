@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+// using UnityEngine.Mathf;
 
 public class Line : MonoBehaviour
 {
@@ -65,13 +66,29 @@ public class Line : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.GetComponent<Rigidbody2D>().velocity.x < 0)
-        {
-            GetComponent<SurfaceEffector2D>().speed = -20;
-        }
-        else
-        {
-            GetComponent<SurfaceEffector2D>().speed = 20;
-        }
+        Vector2 direction = coll.gameObject.GetComponent<Rigidbody2D>().velocity;
+        Debug.Log(direction);
+        GetComponent<AreaEffector2D>().forceAngle = Vector2.Angle(direction, new Vector2(1,0));
+
+        float angle = Vector2.Angle(direction, new Vector2(1,0));
+
+        // Debug.Log(direction);
+        // Debug.Log(Vector2.zero);
+        // float angle;
+        // if (direction.y == 0) {
+            // angle = 
+        // }
+        // float angle = Mathf.Acos(direction.x/direction.y);
+        Debug.Log(angle);
+        Debug.Log("force angle: " + GetComponent<AreaEffector2D>().forceAngle);
+
+        // if(coll.gameObject.GetComponent<Rigidbody2D>().velocity.x < 0)
+        // {
+        //     GetComponent<SurfaceEffector2D>().speed = -20;
+        // }
+        // else
+        // {
+        //     GetComponent<SurfaceEffector2D>().speed = 20;
+        // }
     }
 }

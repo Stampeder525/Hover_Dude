@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114819391509501976}
   - component: {fileID: 68055275075221850}
   - component: {fileID: 120067505493984296}
-  - component: {fileID: 252316050399334566}
+  - component: {fileID: 249837227236370406}
   m_Layer: 0
   m_Name: Line
   m_TagString: Untagged
@@ -166,8 +166,9 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!252 &252316050399334566
-SurfaceEffector2D:
+--- !u!249 &249837227236370406
+AreaEffector2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -177,9 +178,10 @@ SurfaceEffector2D:
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Speed: -20
-  m_SpeedVariation: 0
-  m_ForceScale: 0.05
-  m_UseContactForce: 0
-  m_UseFriction: 1
-  m_UseBounce: 1
+  m_UseGlobalAngle: 0
+  m_ForceAngle: 0
+  m_ForceMagnitude: 18
+  m_ForceVariation: 0
+  m_ForceTarget: 0
+  m_Drag: 0
+  m_AngularDrag: 0
