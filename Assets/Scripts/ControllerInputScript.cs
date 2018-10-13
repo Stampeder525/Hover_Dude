@@ -3,37 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using InControl;
 
-public class ControllerInputScript : MonoBehaviour {
-	private InputDevice inputDevice;
-	public int playerNumber;
-
-	// Use this for initialization
-	void Start ()
-    {
-        inputDevice = InputManager.Devices[0];
-
-    }
+public class ControllerInputScript : MonoBehaviour
+{
+    private InputDevice inputDevice;
+    private int playerNumber;
 
     // Update is called once per frame
-    void Update () {
-		inputDevice = InputManager.Devices[0];
-	}
+    //void Update()
+    //{
+    //    inputDevice = InputManager.Devices[playerNumber];
+    //}
 
-	public float getLeftStickX() {
-		return inputDevice.LeftStickX;
-	}
+    public float getLeftStickX()
+    {
+        return inputDevice.LeftStickX;
+    }
 
-	public float getLeftStickY() {
-		return inputDevice.LeftStickY;
-	}
+    public float getLeftStickY()
+    {
+        return inputDevice.LeftStickY;
+    }
 
-	public float getRightStickX() {
-		return inputDevice.RightStickX;
-	}
+    public float getRightStickX()
+    {
+        return inputDevice.RightStickX;
+    }
 
-	public float getRightStickY() {
-		return inputDevice.RightStickY;
-	}
+    public float getRightStickY()
+    {
+        return inputDevice.RightStickY;
+    }
+
+    public bool getRightTrigger()
+    {
+        return inputDevice.GetControl(InputControlType.RightTrigger).IsPressed;
+    }
 
     public bool getRightTriggerDown()
     {
@@ -58,6 +62,12 @@ public class ControllerInputScript : MonoBehaviour {
     public bool getDPadDownDown()
     {
         return inputDevice.GetControl(InputControlType.DPadDown).WasPressed;
+    }
+
+    public void SetPlayerNumber(int pNum)
+    {
+        playerNumber = pNum;
+        inputDevice = InputManager.Devices[playerNumber];
     }
 
 

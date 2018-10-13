@@ -26,7 +26,7 @@ public class Line : MonoBehaviour
             lineFadeTimer = 0.05f;
             //lineRenderer.SetPositions(points);
             lineRenderer.positionCount--;
-            for(int i = 0; i < points.Count; i++)
+            for (int i = 0; i < points.Count; i++)
             {
                 lineRenderer.SetPosition(i, points[i]);
             }
@@ -65,7 +65,7 @@ public class Line : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if(coll.gameObject.GetComponent<Rigidbody2D>().velocity.x < 0)
+        if (coll.gameObject.GetComponent<Rigidbody2D>().velocity.x < 0)
         {
             GetComponent<SurfaceEffector2D>().speed = -20;
         }
