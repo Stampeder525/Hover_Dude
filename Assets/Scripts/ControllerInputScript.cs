@@ -8,11 +8,14 @@ public class ControllerInputScript : MonoBehaviour {
 	public int playerNumber;
 
 	// Use this for initialization
-	void Start () {
-	}
-	
-	// Update is called once per frame
-	void Update () {
+	void Start ()
+    {
+        inputDevice = InputManager.Devices[0];
+
+    }
+
+    // Update is called once per frame
+    void Update () {
 		inputDevice = InputManager.Devices[0];
 	}
 
@@ -31,6 +34,16 @@ public class ControllerInputScript : MonoBehaviour {
 	public float getRightStickY() {
 		return inputDevice.RightStickY;
 	}
+
+    public bool getRightTriggerDown()
+    {
+        return inputDevice.GetControl(InputControlType.RightTrigger).WasPressed;
+    }
+
+    public bool getRightTriggerUp()
+    {
+        return inputDevice.GetControl(InputControlType.RightTrigger).WasReleased;
+    }
 
 
 }

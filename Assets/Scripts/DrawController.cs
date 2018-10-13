@@ -11,6 +11,8 @@ public class DrawController : MonoBehaviour {
     private Vector3 cursorPos;
     private float lerpFract;
     private float angle;
+    public GameObject controller;
+    private ControllerInputScript controls;
     private TrailRenderer trail;
 
     // Use this for initialization
@@ -19,11 +21,12 @@ public class DrawController : MonoBehaviour {
         lerpFract = 0.3f;
         trail = gameObject.GetComponent<TrailRenderer>();
         angle = Vector3.Angle(Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.parent.position, transform.position - transform.parent.position);
+        controls = controller.GetComponent<ControllerInputScript>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetMouseButtonDown(0))
+        if (controls.getRightTriggerDown())
         {
             GameObject line = Instantiate(linePrefab);
             activeLine = line.GetComponent<Line>();
@@ -33,7 +36,7 @@ public class DrawController : MonoBehaviour {
         {
             trail.emitting = false;
         }
-        if (Input.GetMouseButtonUp(0))
+        if (controls.getRightTriggerUp())
         {
             activeLine = null;
         }
@@ -42,22 +45,26 @@ public class DrawController : MonoBehaviour {
         {
             activeLine.UpdateLine(transform.position);
         }
-        Vector3 mouseVec = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.parent.position;
+        float joystickX = controls.getLeftStickX();
+        float joystickY = controls.getLeftStickY();
+        Vector3 joystickVec = new Vector3(joystickX, joystickY, 0);
         Vector3 ballVec = transform.position - transform.parent.position;
-        angle = Vector2.Angle(mouseVec,ballVec);
+        angle = Vector2.Angle(joystickVec,ballVec);
         if (angle >= 30)
         {
-            lerpFract = 0.1f;
+            lerpFract = 0.4f;
         }
         else
         {
-            lerpFract = 0.3f;
+            lerpFract = 0.6f;
         }
-        cursorPos = Vector3.Lerp(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), lerpFract); //CHANGE MOUSE TO CONTROLLER INPUT
-        Vector2 offset = (Vector2)cursorPos - (Vector2)transform.parent.position; //HERE'S THE PROBLEM
-        offset.Normalize();
-        offset = offset * radius;
-        transform.localPosition = offset;
+        cursorPos = Vector3.Lerp(transform.position - transform.parent.position, joystickVec, lerpFract);
+        //Vector2 offset = (Vector2)cursorPos - (Vector2)transform.parent.position; //HERE'S THE PROBLEM
+        cursorPos.Normalize();
+        //offset.Normalize();
+        //offset = offset * radius;
+        cursorPos = cursorPos * radius;
+        transform.localPosition = cursorPos;
     }
 
     public float GetLerpFract()
