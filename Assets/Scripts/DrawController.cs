@@ -29,7 +29,7 @@ public class DrawController : MonoBehaviour {
         {
             lerpFract = 0.3f;
         }
-        Debug.Log("Angle: " + angle + ", LerpFract: " + lerpFract);
+        // Debug.Log("Angle: " + angle + ", LerpFract: " + lerpFract);
         cursorPos = Vector3.Lerp(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), lerpFract); //CHANGE MOUSE TO CONTROLLER INPUT
         Vector2 offset = (Vector2)cursorPos - Vector2.zero;
         offset.Normalize();
