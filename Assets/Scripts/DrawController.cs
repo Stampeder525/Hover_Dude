@@ -30,15 +30,13 @@ public class DrawController : MonoBehaviour {
         {
             GameObject line = Instantiate(linePrefab);
             activeLine = line.GetComponent<Line>();
+            activeLine.SetOwner(transform.parent.GetComponent<PlayerController>().GetPlayerNumber());
             trail.emitting = true;
-        }
-        else
-        {
-            trail.emitting = false;
         }
         if (controls.getRightTriggerUp())
         {
             activeLine = null;
+            trail.emitting = false;
         }
 
         if (activeLine != null)
@@ -52,11 +50,11 @@ public class DrawController : MonoBehaviour {
         angle = Vector2.Angle(joystickVec,ballVec);
         if (angle >= 30)
         {
-            lerpFract = 0.4f;
+            lerpFract = 0.3f;
         }
         else
         {
-            lerpFract = 0.6f;
+            lerpFract = 0.4f;
         }
         cursorPos = Vector3.Lerp(transform.position - transform.parent.position, joystickVec, lerpFract);
         //Vector2 offset = (Vector2)cursorPos - (Vector2)transform.parent.position; //HERE'S THE PROBLEM

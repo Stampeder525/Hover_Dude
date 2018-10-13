@@ -45,5 +45,10 @@ public class ControllerInputScript : MonoBehaviour {
         return inputDevice.GetControl(InputControlType.RightTrigger).WasReleased;
     }
 
+    public bool getDPadDownDown()
+    {
+        return inputDevice.GetControl(InputControlType.DPadDown).WasPressed;
+    }
+
 
 }
