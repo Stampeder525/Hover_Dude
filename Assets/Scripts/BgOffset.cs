@@ -4,7 +4,7 @@ using System.Collections;
 public class BgOffset : MonoBehaviour {
 
     public float scrollSpeed;
-    public Renderer rend;
+    private Renderer rend;
 
     void Start () {
         rend = GetComponent<Renderer>();
