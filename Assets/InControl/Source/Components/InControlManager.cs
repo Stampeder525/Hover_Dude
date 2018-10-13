@@ -9,7 +9,7 @@ namespace InControl
 {
 	public class InControlManager : MonoBehaviour
 	{
-		public bool logDebugInfo = false;
+		bool logDebugInfo = false;
 		public bool invertYAxis = false;
 		public bool enableXInput = false;
 		public bool useFixedUpdate = false;

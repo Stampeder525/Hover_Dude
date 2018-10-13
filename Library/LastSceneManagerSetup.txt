@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Scenes/ControllerScene.unity
+  isLoaded: 1
+  isActive: 1
