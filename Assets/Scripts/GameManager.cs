@@ -26,6 +26,10 @@ public class GameManager : MonoBehaviour
     public Text p1Text;
     public Text p2Text;
     public Text roundText;
+    public Text maxScoreText;
+
+    public GameObject panel;
+    public Text ready;
 
     // Use this for initialization
     void Awake()
@@ -49,11 +53,23 @@ public class GameManager : MonoBehaviour
         p1Score = PlayerPrefs.GetInt("P1Score");
         p2Score = PlayerPrefs.GetInt("P2Score");
 
-        roundText.text = "Round: " + round;
-        p1Text.text = "P1 Score: " + p1Score;
-        p2Text.text = "P2 Score: " + p2Score;
+        roundText.text = "Round " + round;
+        p1Text.text = "" + p1Score;
+        p2Text.text = "" + p2Score;
+        maxScoreText.text = "First to " + maxScore + " wins!";
+
+        ready.fontSize = 22;
+        ready.text = "Ready?";
+        yield return new WaitForSeconds(1.0f);
+        float waitfor = 2.0f;
+        ready.fontSize = 35;
+        ready.text = "GO!";
+        yield return new WaitForSeconds(1.0f);
+
 
     }
+
+    private Ienumerator countdown()
 
     // Update is called once per frame
     void Update()
@@ -71,7 +87,7 @@ public class GameManager : MonoBehaviour
             }
 
             if (controller.getLeftBumperDown() && controller.getRightBumperDown()) {
-
+                Debug.Log("doing the reset thing");
                 PlayerPrefs.SetInt("P1Score", 0);
                 PlayerPrefs.SetInt("P2Score", 0);
                 PlayerPrefs.SetInt("Round", 0);
@@ -85,23 +101,36 @@ public class GameManager : MonoBehaviour
             if(loser == 0)
             {
                 //Increment player2 score and restart
+                Debug.Log("Player 2 wins");
+                Debug.Log("Score before update: " + PlayerPrefs.GetInt("P2Score"));
+
                 PlayerPrefs.SetInt("P2Score", p2Score + 1);
+                Debug.Log("Score AFTER update: " + PlayerPrefs.GetInt("P2Score"));
+
             }
             else
             {
                 //Increment player1 score
+                Debug.Log("Player 1 wins");
+                Debug.Log("Score before update: " + PlayerPrefs.GetInt("P1Score"));
                 PlayerPrefs.SetInt("P1Score", p1Score + 1);
+                Debug.Log("Score AFTER update: " + PlayerPrefs.GetInt("P1Score"));
+
             }
-            if (p1Score >= maxScore)
+            if (p1Score >= maxScore - 1)
             {
                 //Display "Congratulations p1!"
                 //Buttons: Return to Menu, Play Again
+                PlayerPrefs.SetInt("P1Score", 0);
+                PlayerPrefs.SetInt("P2Score", 0);
                 PlayerPrefs.SetInt("Round", 0);
             }
-            else if (p2Score >= maxScore)
+            else if (p2Score >= maxScore - 1)
             {
                 //Display "Congratulations p2!"
                 //Buttons: Return to Menu, Play Again
+                PlayerPrefs.SetInt("P1Score", 0);
+                PlayerPrefs.SetInt("P2Score", 0);
                 PlayerPrefs.SetInt("Round", 0);
             }
             else
@@ -109,11 +138,14 @@ public class GameManager : MonoBehaviour
                 //Display "Winner: (winner)"
                 //Display progress tokens
                 //Set player scores
+                
                 PlayerPrefs.SetInt("Round", round++);
 
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name); // put this on some "restart" button
 
             }
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // put this on some "restart" button
+
         }
 
     }
