@@ -172,7 +172,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 2
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -235,11 +235,11 @@ Prefab:
       objectReference: {fileID: 1487149845}
     - target: {fileID: 4023815908726722, guid: aad877a4e50f1a64e8eb174360092fb0, type: 2}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4023815908726722, guid: aad877a4e50f1a64e8eb174360092fb0, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aad877a4e50f1a64e8eb174360092fb0, type: 2}
@@ -328,6 +328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
+  - component: {fileID: 519420030}
   - component: {fileID: 519420029}
   m_Layer: 0
   m_Name: Main Camera
@@ -343,6 +344,21 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52b80b8d8416da42bb4abb00851e532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camTransform: {fileID: 0}
+  shakeDuration: 0
+  shakeAmount: 0.5
+  decreaseFactor: 2
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -486,6 +502,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &539877505 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1217116631595600, guid: aad877a4e50f1a64e8eb174360092fb0,
+    type: 2}
+  m_PrefabInternal: {fileID: 264158235}
+--- !u!114 &539877507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 539877505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf3526aa9d176450a8a521c18d168f5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 1
+  pelletSpeed: 500
+  pelletObj: {fileID: 1377644015750444, guid: 716ab5f73639f4a0a93abaa7018f9838, type: 2}
+  controller: {fileID: 1487149845}
 --- !u!4 &631465549 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4023815908726722, guid: aad877a4e50f1a64e8eb174360092fb0,
@@ -561,7 +597,7 @@ GameObject:
   - component: {fileID: 1101895841}
   - component: {fileID: 1101895840}
   - component: {fileID: 1101895839}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: playerModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -593,7 +629,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.007, y: 0}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.095
 --- !u!114 &1101895840
@@ -642,12 +678,12 @@ SpriteRenderer:
   m_SortingLayerID: 1273855347
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d6e8a7c9f65ba3041b52bf20528bf9dc, type: 3}
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.9811321, g: 0.18974723, b: 0.18974723, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.15, y: 0.16}
+  m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -684,7 +720,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 2
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -790,7 +826,7 @@ GameObject:
   - component: {fileID: 1619445916}
   - component: {fileID: 1619445914}
   - component: {fileID: 1619445919}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: playerModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -843,7 +879,7 @@ SpriteRenderer:
   m_SortingLayerID: 396315031
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d6e8a7c9f65ba3041b52bf20528bf9dc, type: 3}
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -879,9 +915,29 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.007, y: 0}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.095
+--- !u!1 &1643548110 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1217116631595600, guid: aad877a4e50f1a64e8eb174360092fb0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1957137095}
+--- !u!114 &1643548112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1643548110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf3526aa9d176450a8a521c18d168f5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 1
+  pelletSpeed: 500
+  pelletObj: {fileID: 1377644015750444, guid: de73b0e85c98e4e90bf8cec1b2016a97, type: 2}
+  controller: {fileID: 717580157}
 --- !u!1001 &1957137095
 Prefab:
   m_ObjectHideFlags: 0
@@ -939,11 +995,11 @@ Prefab:
       objectReference: {fileID: 717580157}
     - target: {fileID: 4023815908726722, guid: aad877a4e50f1a64e8eb174360092fb0, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4023815908726722, guid: aad877a4e50f1a64e8eb174360092fb0, type: 2}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aad877a4e50f1a64e8eb174360092fb0, type: 2}

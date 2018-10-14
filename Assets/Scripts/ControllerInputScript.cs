@@ -64,6 +64,11 @@ public class ControllerInputScript : MonoBehaviour
         return inputDevice.GetControl(InputControlType.DPadDown).WasPressed;
     }
 
+    public bool getADown() 
+    {
+        return inputDevice.GetControl(InputControlType.Action1).WasPressed;
+    }
+
     public void SetPlayerNumber(int pNum)
     {
         playerNumber = pNum;

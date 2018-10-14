@@ -72,15 +72,13 @@ public class Line : MonoBehaviour
         }
     }
 
+    public int getOwner() {
+        return owner;
+    }
+
     void OnCollisionEnter2D(Collision2D coll)
     {
         Vector2 direction = coll.gameObject.GetComponent<Rigidbody2D>().velocity;
-        //Debug.Log(direction);
         GetComponent<AreaEffector2D>().forceAngle = Vector2.Angle(direction, new Vector2(1,0));
-
-        float angle = Vector2.Angle(direction, new Vector2(1,0));
-
-        //Debug.Log(angle);
-        //Debug.Log("force angle: " + GetComponent<AreaEffector2D>().forceAngle);
     }
 }

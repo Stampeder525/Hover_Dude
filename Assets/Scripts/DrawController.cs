@@ -1,6 +1,7 @@
 ﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DrawController : MonoBehaviour {
     public float radius;
@@ -23,6 +24,13 @@ public class DrawController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (controls.getADown()) {
+            transform.parent.gameObject.GetComponent<PlayerController>().destroyEntireTrail();
+            Camera.main.GetComponent<Shake>().shakeDuration = 0.5f;
+
+        }
+
+
         if (controls.getLeftTriggerDown())
         {
             GameObject line = Instantiate(linePrefab);

@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 70098452967639698}
   m_Layer: 0
   m_Name: PelletShotP2
-  m_TagString: Untagged
+  m_TagString: pellet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 1377644015750444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7804c03de10f429688e7f9a57a1085b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knockback: 10
 --- !u!114 &114969526045980982
 MonoBehaviour:
   m_ObjectHideFlags: 1

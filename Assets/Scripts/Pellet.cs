@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pellet : MonoBehaviour {
 
     private int owner;
+    public float knockback;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
