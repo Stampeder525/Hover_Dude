@@ -37,10 +37,10 @@ public class PlayerController : MonoBehaviour {
                 Camera.main.GetComponent<Shake>().shakeDuration = 0.5f;
 
                 dead = true;
+
                 IEnumerator coroutine = WaitAndRestart(1.0f);
 
                 StartCoroutine(coroutine);
-
             }
         }
     }
@@ -50,7 +50,9 @@ public class PlayerController : MonoBehaviour {
         while (true)
         {
             yield return new WaitForSeconds(waitTime);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            GameManager.instance.EndRound(playerNumber);
+
         }
     }
 
