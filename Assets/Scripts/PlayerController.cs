@@ -26,10 +26,9 @@ public class PlayerController : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        GameObject pelletObject = coll.gameObject;
-        if(pelletObject.tag == "pellet")
+        if(coll.gameObject.tag == "pellet")
         {
-            
+            GameObject pelletObject = coll.gameObject;
             Pellet pellet = pelletObject.GetComponent<Pellet>();
             if (pellet.GetOwner() != playerNumber){
                 this.applyImpact(pellet.knockback, pelletObject.GetComponent<Rigidbody2D>().velocity);
@@ -42,6 +41,21 @@ public class PlayerController : MonoBehaviour {
 
                 StartCoroutine(coroutine);
             }
+        }
+        
+    }
+
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "barrier")
+        {
+            this.destroyEntireTrail();
+            Camera.main.GetComponent<Shake>().shakeDuration = 0.5f;
+            dead = true;
+
+            IEnumerator coroutine = WaitAndRestart(1.0f);
+
+            StartCoroutine(coroutine);
         }
     }
 
@@ -58,6 +72,7 @@ public class PlayerController : MonoBehaviour {
 
     private void applyImpact(float knockback, Vector2 direction) {
         Rigidbody2D rb = transform.gameObject.GetComponent<Rigidbody2D>();
+        rb.velocity = Vector2.zero;
         rb.AddForce(direction * knockback, ForceMode2D.Impulse);
     }
 
@@ -65,7 +80,7 @@ public class PlayerController : MonoBehaviour {
         GameObject[] rootObjects = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
         foreach (GameObject rootObject in rootObjects) {
             if (rootObject.tag == "line") {
-                if (rootObject.GetComponent<Line>().getOwner() == playerNumber) {
+                if (rootObject.GetComponent<Line>().GetOwner() == playerNumber) {
                     Destroy(rootObject);
                 }
             }

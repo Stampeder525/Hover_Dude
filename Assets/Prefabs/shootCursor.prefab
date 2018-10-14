@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4023815908726722}
   - component: {fileID: 212487456391378522}
+  - component: {fileID: 114716226757364874}
   m_Layer: 0
   m_Name: shootCursor
   m_TagString: Untagged
@@ -40,6 +41,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114716226757364874
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1217116631595600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf3526aa9d176450a8a521c18d168f5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0
+  pelletSpeed: 400
+  pelletObj: {fileID: 0}
+  controller: {fileID: 0}
 --- !u!212 &212487456391378522
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -75,7 +91,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 511ef16fdc1c1b64395caf69a03e925c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

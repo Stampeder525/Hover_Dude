@@ -72,7 +72,7 @@ public class Line : MonoBehaviour
         }
     }
 
-    public int getOwner() {
+    public int GetOwner() {
         return owner;
     }
 

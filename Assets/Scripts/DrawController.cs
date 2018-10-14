@@ -24,15 +24,15 @@ public class DrawController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (controls.getADown()) {
-            transform.parent.gameObject.GetComponent<PlayerController>().destroyEntireTrail();
-            Camera.main.GetComponent<Shake>().shakeDuration = 0.5f;
+        //if (controls.getADown()) {
+        //    transform.parent.gameObject.GetComponent<PlayerController>().destroyEntireTrail();
+        //    Camera.main.GetComponent<Shake>().shakeDuration = 0.5f;
 
-        }
-
+        //}
 
         if (controls.getLeftTriggerDown())
         {
+            Debug.Log("Drawing??");
             GameObject line = Instantiate(linePrefab);
             activeLine = line.GetComponent<Line>();
             activeLine.SetOwner(transform.parent.GetComponent<PlayerController>().GetPlayerNumber());
