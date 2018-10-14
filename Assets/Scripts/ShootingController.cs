@@ -13,7 +13,6 @@ public class ShootingController : MonoBehaviour {
 	void Start () {
         cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition); //CHANGE MOUSE TO CONTROLLER INPUT
         controls = controller.GetComponent<ControllerInputScript>();
-
 	}
 	
 	// Update is called once per frame
@@ -26,6 +25,7 @@ public class ShootingController : MonoBehaviour {
             if (joystickVec != Vector3.zero)
             {
                 GameObject pellet = Instantiate(pelletObj, transform.position, Quaternion.identity);
+                pellet.SetOwner(transform.parent.GetComponent<PlayerController>().GetPlayerNumber());
                 pellet.GetComponent<Rigidbody2D>().AddForce(joystickVec * pelletSpeed);
             }
             //SHOOT
@@ -35,6 +35,7 @@ public class ShootingController : MonoBehaviour {
         cursorPos = cursorPos * radius;
         if(joystickVec != Vector3.zero){
             transform.localPosition = cursorPos;
+            transform.up = joystickVec;
         }
 	}
 }

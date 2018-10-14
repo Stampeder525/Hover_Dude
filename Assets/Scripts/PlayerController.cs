@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     // Use this for initialization
     public int playerNumber = 0;
+    private bool dead = false;
 
 	void Start () {
 
@@ -19,5 +20,16 @@ public class PlayerController : MonoBehaviour {
     public int GetPlayerNumber()
     {
         return playerNumber;
+    }
+
+    void OnCollisionEnter2D(Collision coll)
+    {
+        if(coll.gameObject.tag == "pellet")
+        {
+            if (coll.gameObject.GetComponent<Pellet>().GetOwner()){
+                dead = true;
+
+            }
+        }
     }
 }
