@@ -11,17 +11,14 @@ public class DrawController : MonoBehaviour {
     private float angle;
     public GameObject controller;
     private ControllerInputScript controls;
-    private TrailRenderer trail;
 
     // Use this for initialization
     void Start () {
-		cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition); //CHANGE MOUSE TO CONTROLLER INPUT
+		cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         lerpFract = 0.3f;
-        trail = gameObject.GetComponent<TrailRenderer>();
         angle = Vector3.Angle(Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.parent.position, transform.position - transform.parent.position);
         controls = controller.GetComponent<ControllerInputScript>();
     }
-
 
     // Update is called once per frame
     void Update()

@@ -62,17 +62,25 @@ public class Line : MonoBehaviour
     public void SetOwner(int player)
     {
         owner = player;
+        if (owner == 0)
+        {
+            gameObject.layer = 8;
+        }
+        else if (owner == 1)
+        {
+            gameObject.layer = 9;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D coll)
     {
         Vector2 direction = coll.gameObject.GetComponent<Rigidbody2D>().velocity;
-        Debug.Log(direction);
+        //Debug.Log(direction);
         GetComponent<AreaEffector2D>().forceAngle = Vector2.Angle(direction, new Vector2(1,0));
 
         float angle = Vector2.Angle(direction, new Vector2(1,0));
 
-        Debug.Log(angle);
-        Debug.Log("force angle: " + GetComponent<AreaEffector2D>().forceAngle);
+        //Debug.Log(angle);
+        //Debug.Log("force angle: " + GetComponent<AreaEffector2D>().forceAngle);
     }
 }
