@@ -20,7 +20,7 @@ public class Pellet : MonoBehaviour {
         owner = player;
     }
 
-    public void GetOwner()
+    public int GetOwner()
     {
         return owner;
     }
