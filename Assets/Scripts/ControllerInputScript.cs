@@ -59,6 +59,16 @@ public class ControllerInputScript : MonoBehaviour
         return inputDevice.GetControl(InputControlType.LeftTrigger).WasReleased;
     }
 
+    public bool getLeftBumperDown()
+    {
+        return inputDevice.GetControl(InputControlType.LeftBumper).WasPressed;
+    }
+
+    public bool getRightBumperDown()
+    {
+        return inputDevice.GetControl(InputControlType.RightBumper).WasPressed;
+    }
+
     public bool getDPadDownDown()
     {
         return inputDevice.GetControl(InputControlType.DPadDown).WasPressed;

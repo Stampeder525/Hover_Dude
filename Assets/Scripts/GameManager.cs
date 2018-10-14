@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,13 +15,17 @@ public class GameManager : MonoBehaviour
     public GameObject[] controllers;
     private ControllerInputScript controls;
 
+    public Canvas canvas;
     public GameObject[] players;
-    public Vector2[] startingLocations;
     private int round = 0;
     private int p1Score = 0;
     private int p2Score = 0;
     private bool roundOver = false;
     private int loser = 0;
+
+    public Text p1Text;
+    public Text p2Text;
+    public Text roundText;
 
     // Use this for initialization
     void Awake()
@@ -38,12 +43,15 @@ public class GameManager : MonoBehaviour
         {
             ControllerInputScript controls = controllers[i].GetComponent<ControllerInputScript>();
             controls.SetPlayerNumber(i);
-            startingLocations[i] = players[i].GetComponent<Rigidbody2D>().position;
         }
 
         round = PlayerPrefs.GetInt("Round");
         p1Score = PlayerPrefs.GetInt("P1Score");
         p2Score = PlayerPrefs.GetInt("P2Score");
+
+        roundText.text = "Round: " + round;
+        p1Text.text = "P1 Score: " + p1Score;
+        p2Text.text = "P2 Score: " + p2Score;
 
     }
 
@@ -56,8 +64,17 @@ public class GameManager : MonoBehaviour
         }
         for (int i = 0; i < numPlayers; i++)
         {
-            if (controllers[i].GetComponent<ControllerInputScript>().getDPadDownDown())
+            ControllerInputScript controller = controllers[i].GetComponent<ControllerInputScript>();
+            if (controller.getDPadDownDown())
             {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+
+            if (controller.getLeftBumperDown() && controller.getRightBumperDown()) {
+
+                PlayerPrefs.SetInt("P1Score", 0);
+                PlayerPrefs.SetInt("P2Score", 0);
+                PlayerPrefs.SetInt("Round", 0);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
@@ -68,14 +85,12 @@ public class GameManager : MonoBehaviour
             if(loser == 0)
             {
                 //Increment player2 score and restart
-                p2Score++;
-                players[1].GetComponent<PlayerController>().destroyEntireTrail();
+                PlayerPrefs.SetInt("P2Score", p2Score + 1);
             }
             else
             {
                 //Increment player1 score
-                p1Score++;
-                players[0].GetComponent<PlayerController>().destroyEntireTrail();
+                PlayerPrefs.SetInt("P1Score", p1Score + 1);
             }
             if (p1Score >= maxScore)
             {
@@ -96,10 +111,8 @@ public class GameManager : MonoBehaviour
                 //Set player scores
                 PlayerPrefs.SetInt("Round", round++);
 
-                //return players to starting locations
-                for  (int i = 0; i < numPlayers; i++) {
-                    players[i].GetComponent<Rigidbody2D>().position = startingLocations[i];
-                }
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name); // put this on some "restart" button
+
             }
         }
 

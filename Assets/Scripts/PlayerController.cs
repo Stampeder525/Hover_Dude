@@ -50,8 +50,8 @@ public class PlayerController : MonoBehaviour {
         while (true)
         {
             yield return new WaitForSeconds(waitTime);
-            // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             GameManager.instance.EndRound(playerNumber);
+        
 
         }
     }
