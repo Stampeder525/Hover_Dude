@@ -22,11 +22,11 @@ public class PlayerController : MonoBehaviour {
         return playerNumber;
     }
 
-    void OnCollisionEnter2D(Collision coll)
+    void OnCollisionEnter2D(Collision2D coll)
     {
         if(coll.gameObject.tag == "pellet")
         {
-            if (coll.gameObject.GetComponent<Pellet>().GetOwner()){
+            if (coll.gameObject.GetComponent<Pellet>().GetOwner() != playerNumber){
                 dead = true;
 
             }

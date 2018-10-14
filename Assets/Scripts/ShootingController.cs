@@ -25,7 +25,7 @@ public class ShootingController : MonoBehaviour {
             if (joystickVec != Vector3.zero)
             {
                 GameObject pellet = Instantiate(pelletObj, transform.position, Quaternion.identity);
-                pellet.SetOwner(transform.parent.GetComponent<PlayerController>().GetPlayerNumber());
+                pellet.GetComponent<Pellet>().SetOwner(transform.parent.GetComponent<PlayerController>().GetPlayerNumber());
                 pellet.GetComponent<Rigidbody2D>().AddForce(joystickVec * pelletSpeed);
             }
             //SHOOT
